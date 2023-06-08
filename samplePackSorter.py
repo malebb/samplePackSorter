@@ -2,52 +2,52 @@ import os;
 import argparse
 from argparse import RawTextHelpFormatter
 import shutil
-from enum import Enum
-
-class SampleTypes(Enum):
-    KICK = 0
-    SNARE = 1
-    BASS = 2
-    CLAP = 3
-    HAT = 4
-    PERC = 5
-    FX = 6
-    BELL = 7
-    OTHER = 8
+from SampleTypes import sample_types
 
 # Parse program's arguments
-parser = argparse.ArgumentParser(description="This program helps you sort your sample pack.\nIt uses the sample names to perform the sorting.", formatter_class=RawTextHelpFormatter)
+parser = argparse.ArgumentParser(description=
+"Sample Pack Sorter helps you sort your sample pack.\n\
+It uses your samples' name to perform the sorting."\
+                                 , formatter_class=RawTextHelpFormatter)
 parser.add_argument("path", help="Path toward the directory containing your samples.")
-parser.add_argument("dest", help="Path where the sorted sample pack will be added.")
+parser.add_argument("dest", help="Path where the sorted sample pack will be created.")
 parser.add_argument("name", help="Name of the created sample pack after sorting.")
 args = parser.parse_args()
 
 # Create sorted sample pack folder
 path_to_sorted_pack = os.path.join(args.dest, args.name)
 if (not os.path.exists(path_to_sorted_pack)):
-    os.mkdir(path_to_sorted_pack)
-
-# Look for a category in the sample name
-def get_sample_type(sample):
-    for sample_type_id in range(len(SampleTypes) - 1):
-        sample_type = SampleTypes(sample_type_id).name.lower()
-        if (sample.lower().find(sample_type) != -1):
-            return SampleTypes(sample_type_id)
-    return SampleTypes.OTHER
+    os.makedirs(path_to_sorted_pack)
 
 # Create a new sample category folder if never created
-def create_categorie_dir(sample_categorie):
-    categorie_path = os.path.join(path_to_sorted_pack, sample_categorie.name.lower())
-    if (not os.path.exists(categorie_path) and sample_categorie):
-        os.mkdir(categorie_path)
-    return (categorie_path)
+def create_categorie_dir(sample_name):
+    type_found = False
+    type_path = ""
+    for sample_type in sample_types:
+        for type_match in sample_types[sample_type]:
+            if (sample_name.lower().find(type_match) != -1):
+                type_found = True
+                break
+        if type_found:
+            type_path = os.path.join(path_to_sorted_pack, sample_type)
+            break
+    if not type_found:
+        type_path = os.path.join(path_to_sorted_pack, "others")
+
+    if (not os.path.exists(type_path)):
+        os.makedirs(type_path)
+    return (type_path)
 
 # Loop through each sample to sort them into the right category
 def sort_sample_pack():
+    file_sorted_nb = 0
     for root, dirs, samples in os.walk(args.path, topdown=True):
-        for sample in samples:
-            sample_type = get_sample_type(sample);
-            sample_dest = create_categorie_dir(sample_type)
-            shutil.copy(os.path.join(root, sample), sample_dest)
+        for sample_name in samples:
+            sample_dest = create_categorie_dir(sample_name)
+            shutil.copy(os.path.join(root, sample_name), sample_dest)
+            file_sorted_nb += 1
+    return file_sorted_nb
 
-sort_sample_pack()
+file_sorted_nb = sort_sample_pack()
+
+print(file_sorted_nb, " files have been sorted successfully")
