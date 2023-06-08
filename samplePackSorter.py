@@ -21,11 +21,12 @@ if (not os.path.exists(path_to_sorted_pack)):
 
 # Create a new sample category folder if never created
 def create_categorie_dir(sample_name):
+    sample_name = sample_name.lower()
     type_found = False
     type_path = ""
     for sample_type in sample_types:
         for type_match in sample_types[sample_type]:
-            if (sample_name.lower().find(type_match) != -1):
+            if (sample_name.find(type_match) != -1):
                 type_found = True
                 break
         if type_found:
@@ -33,7 +34,8 @@ def create_categorie_dir(sample_name):
             break
     if not type_found:
         type_path = os.path.join(path_to_sorted_pack, "others")
-
+    if sample_name.find("loop") != -1:
+        type_path = os.path.join(type_path, "loop")
     if (not os.path.exists(type_path)):
         os.makedirs(type_path)
     return (type_path)
@@ -50,4 +52,4 @@ def sort_sample_pack():
 
 file_sorted_nb = sort_sample_pack()
 
-print(file_sorted_nb, " files have been sorted successfully")
+print(file_sorted_nb, "files have been sorted successfully")
