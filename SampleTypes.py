@@ -5,6 +5,39 @@
 
 sample_types = {
 
+    # From less ambiguous to more ambiguous
+
+    # Bass
+    "basses": ["bass"],
+    "808s": ["808"],
+
+    # voxes
+    "voxes/shouts": ["shout"],
+    "voxes/voices": ["voiced"],
+    "voxes/vocals": ["vocal"],
+    "voxes/acapella": ["acapella"],
+
+    # Transitions
+    "transitions/impacts": ["impact"],
+    "transitions/risers": ["riser"],
+    "transitions/uplifter": ["uplifter"],
+    "transitions/sweeps": ["sweep"],
+    "transitions/fills": ["fill"],
+    "transitions/whooshs": ["whoosh"],
+
+    # Ambiences
+    "ambiences/rains": ["rain"],
+    "ambiences/forests": ["forest"],
+    "ambiences/natures": ["nature"],
+    "ambiences/beaches": ["beach"],
+    "ambiences/nights": ["night"],
+    "ambiences/cities": ["city"],
+    "ambiences/streets": ["street"],
+    "ambiences/crowds": ["crowd"],
+    "ambiences/thunderstorms": ["thunderstorm"],
+    "ambiences/birds": ["bird"],
+    "ambiences/others": ["ambiance", "ambience"],
+
     # Instruments
     "instruments/kalimbas": ["kalimba"],
     "instruments/guitars": ["guitar"],
@@ -18,12 +51,22 @@ sample_types = {
     "instruments/triangles": ["triangle"],
     "instruments/synths": ["synth"],
     "instruments/marimbas": ["marimba"],
-    "instruments/steelpans": ["steelpans"],
+    "instruments/steelpans": ["steelpan"],
     "instruments/horns": ["horn"],
     "instruments/sitars": ["sitar"],
     "instruments/harp": ["harp"],
-    "instruments/xilophones": ["xilo"],
+    "instruments/xylophones": ["xylo"],
     "instruments/trumpets": ["trumpet"],
+    "instruments/brasses": ["brass"],
+
+    # Fxs
+    "fx/guns": ["gun", "rifle"],
+    "fx/clocks": ["clock"],
+    "fx/alarms": ["alarm"],
+    "fx/sirens": ["siren"],
+    "fx/coins": ["coin"],
+    "fx/honks": ["honk"],
+    "fx/others": ["fx", "effect"],
 
     # Drums
     "kicks": ["kick"],
@@ -41,12 +84,7 @@ sample_types = {
     "rides": ["ride"],
     "splashes": ["splash"],
 
-    # Bass
-    "basses": ["bass"],
-    "808s": ["808"],
-
     # Percs
-    "percs/others": ["perc", "prc"],
     "percs/snaps": ["snap"],
     "percs/sticks": ["stick"],
     "percs/woodblocks": ["woodblock"],
@@ -57,50 +95,20 @@ sample_types = {
     "percs/djembe": ["djembe"],
     "percs/timpanies": ["timpani"],
     "percs/castanets": ["castanet"],
+    "percs/congas": ["conga"],
+    "percs/others": ["perc", "prc"],
 
-    # fxs
-    "fx/guns": ["gun", "rifle"],
-    "fx/clocks": ["clock"],
-    "fx/alarms": ["alarms"],
-    "fx/sirens": ["sirens"],
-    "fx/coins": ["coin"],
-    "fx/honks": ["honk"],
-    "fx/others": ["fx", "effect"],
-
-    # transitions
+    # Transitions #2 (more ambiguous)
     "transitions/hits": ["hit"],
-    "transitions/impacts": ["impact"],
-    "transitions/risers": ["riser"],
-    "transitions/uplifter": ["uplifter"],
-    "transitions/sweeps": ["sweep"],
-    "transitions/fills": ["fill"],
 
     # Textures
     "textures/vinyl": ["vinyl"],
     "textures/others": ["texture"],
 
-
-    # Ambiences
-    "ambiences/rains": ["rain"],
-    "ambiences/forests": ["forest"],
-    "ambiences/natures": ["nature"],
-    "ambiences/beaches": ["beach"],
-    "ambiences/nights": ["night"],
-    "ambiences/cities": ["city"],
-    "ambiences/streets": ["street"],
-    "ambiences/crowds": ["crowd"],
-    "ambiences/thunderstorms": ["thunderstorm"],
-    "ambiences/birds": ["bird"],
-    "ambiences/others": ["ambiance", "ambience"],
-
-    # Voice
-    "vox/shouts": ["shout"],
-    "vox/voices": ["voiced"],
-    "vox/vocals": ["vocal"],
-    "vox/woo": ["woo"],
-    "vox/yeah": ["yeah"],
-    "vox/uh": ["uh"],
-    "vox/hey": ["hey"],
-    "vox/breath": ["breath"],
-    "vox/acapella": ["acapella"],
+    # Voice #2 (more ambiguous)
+    "voxes/woo": ["woo"],
+    "voxes/yeah": ["yeah"],
+    "voxes/uh": ["uh"],
+    "voxes/hey": ["hey"],
+    "voxes/breath": ["breath"],
 }
